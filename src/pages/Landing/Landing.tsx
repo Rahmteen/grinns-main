@@ -35,7 +35,7 @@ const Landing = () => {
             bg="transparent"
             _hover={{ bg: "whiteAlpha.200" }}
             transition={"all 0.35s ease-in-out"}
-            borderWidth="0.5px"
+            borderWidth="1px"
             borderColor="white"
             px={3}
             py={1}
