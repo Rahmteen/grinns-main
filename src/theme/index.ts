@@ -51,6 +51,7 @@ export const defaultTheme = extendTheme({
         minWidth: "100vw",
         overflowX: "hidden",
         overscrollBehavior: "none !important",
+        background: 'black'
         // backgroundImage: 'linear-gradient(to right bottom, #ffffff, #ffeeff, #ffd8de, #ffd789, #fff236)'
       },
       '.chakra-input[type="search"]::-webkit-search-cancel-button': {

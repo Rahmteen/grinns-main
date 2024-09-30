@@ -3,7 +3,7 @@ import logo from "../../../public/images/logo.jpg";
 
 const Landing = () => {
   return (
-    <Stack alignItems={"center"} justifyContent={"center"} bg="black" minW="100vw" minH="100vh">
+    <Stack alignItems={"center"} justifyContent={"center"} bg="black" minW="100vw" mt={-10} minH="100vh">
       <Fade in={true} transition={{ enter: { delay: 0.5, duration: 0.5 } }}>
         <Image boxSize="10rem" src={logo} />
       </Fade>
