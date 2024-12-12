@@ -3,9 +3,9 @@ import { Flex, Link, Stack, Text } from "@chakra-ui/react";
 const Footer = () => {
   return (
     <Flex
-      px={{base: 16, lg:8}}
-      py={{ base: 10, lg: 10 }}
-      pb={{base: 32, lg: 10}}
+      px={{ base: 16, lg: 8 }}
+      py={{ base: 16, lg: 10 }}
+      pb={{ base: 32, lg: 10 }}
       alignItems={"center"}
       bg="white"
       minW="100dvw"
@@ -39,13 +39,13 @@ const Footer = () => {
         </Flex>
       </Flex>
       <Flex ml="auto" gap={2}>
-        <Text fontSize={"xs"} fontFamily={"bricolage"} fontWeight={200} color="blackAlpha.700">
+        <Text as={'a'} href="mailto:thegrinns@gmail.com" fontSize={"xs"} fontFamily={"bricolage"} fontWeight={200} color="blackAlpha.700">
           contact
         </Text>
         <Text fontSize={"xs"} fontFamily={"bricolage"} fontWeight={200} color="blackAlpha.500">
           /
         </Text>
-        <Text fontSize={"xs"} fontFamily={"bricolage"} fontWeight={200} color="blackAlpha.700">
+        <Text as={'a'} href="mailto:thegrinns@gmail.com" fontSize={"xs"} fontFamily={"bricolage"} fontWeight={200} color="blackAlpha.700">
           booking
         </Text>
       </Flex>
