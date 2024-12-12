@@ -1,6 +1,6 @@
 import CartDrawer from "@/components/shopping/CartDrawer/CartDrawer";
 import { Dispatch, store } from "@/store";
-import { Fade, Flex, SlideFade, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Fade, Flex, Image, SlideFade, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -31,12 +31,12 @@ const Navbar = () => {
   }, [pathname, checkout?.lineItems]);
 
   return (
-    <Flex ref={navRef} bg="white" px={5} py={2.5} justifyContent={"space-between"} alignItems={"center"}>
+    <Flex ref={navRef} bg="white" px={5} py={4} justifyContent={"space-between"} alignItems={"center"}>
       <Text
         cursor={"pointer"}
         onClick={() => navigate("/")}
         fontSize={{ base: "md", lg: "xl" }}
-        fontFamily={"bricolage"}
+        fontFamily={"nineties"}
         fontWeight={600}
         color={isMobile && pathname === "/" ? "black" : isMobile && pathname !== "/" ? "blackAlpha.500" : "black"}
       >
@@ -73,7 +73,7 @@ const Navbar = () => {
           gap={0.5}
         >
           <Text fontSize={{ base: "sm", lg: "md" }} as="i" className="fa-sharp fa-cart-shopping" />
-          <Stack pl={{base: 0.5, lg:1}} mr={-1}>
+          <Stack pl={{ base: 0.5, lg: 1 }} mr={-1}>
             <SlideFade unmountOnExit={false} in={checkout?.lineItems?.length ? true : false}>
               <Text
                 px={checkout?.lineItems?.length ? 1 : 0}

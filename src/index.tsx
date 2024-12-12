@@ -9,12 +9,14 @@ import DataWrapper from "@/components/wrappers/DataWrapper/DataWrapper";
 import NavWrapper from "@/components/wrappers/NavWrapper/NavWrapper";
 import "@fontsource-variable/bricolage-grotesque";
 import "@fontsource-variable/source-sans-3";
+import Fonts from "@/Fonts";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <Provider store={store}>
     <BrowserRouter>
       <ChakraProvider theme={defaultTheme}>
+        <Fonts />
         <DataWrapper>
           <NavWrapper>
             <App />

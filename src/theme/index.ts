@@ -4,6 +4,7 @@ export const defaultTheme = extendTheme({
   fonts: {
     bricolage: "'Bricolage Grotesque Variable', sans-serif",
     source: "''Source Sans 3 Variable', sans-serif'",
+    nineties: "'Nineties Headliner', sans-serif"
   },
   styles: {
     global: () => ({
