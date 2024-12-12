@@ -5,10 +5,10 @@ const Footer = () => {
     <Flex
       px={8}
       py={{ base: 10, lg: 10 }}
-      pb={`calc(16px + env(safe-area-inset-bottom))`}
+      pb={`calc(32px + env(safe-area-inset-bottom))`}
       alignItems={"center"}
       bg="white"
-      minW="100vw"
+      minW="100dvw"
       minH={{ base: "10dvh", lg: "10vh" }}
     >
       <Flex alignItems={"center"} gap={2}>

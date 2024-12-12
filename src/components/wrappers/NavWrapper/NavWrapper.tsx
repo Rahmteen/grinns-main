@@ -8,7 +8,7 @@ const NavWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Navbar />
-      <Stack gap={0} minH="90vh">
+      <Stack gap={0} minH="90dvh">
         {children}
       </Stack>
       <Footer />
