@@ -9,27 +9,35 @@ const Footer = () => {
       alignItems={"center"}
       bg="white"
       minW="100vw"
-      minH={{ base: "10vh", lg: "10vh" }}
+      minH={{ base: "10dvh", lg: "10vh" }}
     >
-      <Stack>
-        <Text fontStyle={"italic"} fontSize={"xs"} fontFamily={"bricolage"} fontWeight={300} color="blackAlpha.600">
+      <Flex alignItems={"center"} gap={2}>
+        <Text fontStyle={"italic"} fontSize={"xs"} fontFamily={"bricolage"} fontWeight={300} color="blackAlpha.700">
           GRINNS 2025
         </Text>
-        <Flex gap={2}>
+        <Flex pl={1} mt={"-3px"} gap={2}>
           <Link href="https://open.spotify.com/artist/196MfFl5VIfyX1ZBmJeWHc" target="_blank">
             <Text
               cursor="pointer"
               pointerEvents={"auto"}
-              fontSize={"sm"}
+              fontSize={"11.5px"}
               as="i"
+              color="blackAlpha.700"
               className="fa-brands fa-spotify"
             ></Text>
           </Link>
           <Link href="https://music.apple.com/us/artist/the-grinns/1033694700" target="_blank">
-            <Text cursor="pointer" pointerEvents={"auto"} fontSize={"sm"} as="i" className="fa-brands fa-apple"></Text>
+            <Text
+              color="blackAlpha.700"
+              cursor="pointer"
+              pointerEvents={"auto"}
+              fontSize={"xs"}
+              as="i"
+              className="fa-brands fa-apple"
+            ></Text>
           </Link>
         </Flex>
-      </Stack>
+      </Flex>
       <Flex ml="auto" gap={2}>
         <Text fontSize={"xs"} fontFamily={"bricolage"} fontWeight={200} color="blackAlpha.700">
           contact
