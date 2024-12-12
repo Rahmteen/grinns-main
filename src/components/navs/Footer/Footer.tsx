@@ -3,9 +3,9 @@ import { Flex, Link, Stack, Text } from "@chakra-ui/react";
 const Footer = () => {
   return (
     <Flex
-      px={8}
+      px={{base: 12, lg:8}}
       py={{ base: 10, lg: 10 }}
-      pb={`calc(32px + env(safe-area-inset-bottom))`}
+      pb={{base: 20, lg: 10}}
       alignItems={"center"}
       bg="white"
       minW="100dvw"
