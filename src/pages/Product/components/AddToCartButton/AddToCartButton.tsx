@@ -19,6 +19,7 @@ const AddToCartButton = () => {
     <Button
       onClick={() => {
         if (selectedVariant !== null && checkout && product?.variants?.[selectedVariant]?.id) {
+
           dispatch.cartModel.addLineItemToCart([
             checkout.id,
             [{ variantId: product?.variants?.[selectedVariant]?.id, quantity: 1 }],

@@ -28,7 +28,7 @@ const Navbar = () => {
     if (navRef?.current) {
       navRef?.current?.scrollIntoView();
     }
-  }, [pathname]);
+  }, [pathname, checkout?.lineItems]);
 
   return (
     <Flex ref={navRef} bg="white" px={5} py={2.5} justifyContent={"space-between"} alignItems={"center"}>

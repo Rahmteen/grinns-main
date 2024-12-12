@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <Flex
       px={8}
-      py={{ base: 4, lg: 10 }}
+      py={{ base: 10, lg: 10 }}
       alignItems={"center"}
       bg="white"
       minW="100vw"
