@@ -23,11 +23,10 @@ const OptionsMenu = () => {
   useOutsideClick(wrapperRef, () => dispatch.productModel.clearSelectedVariant());
 
   return (
-    <Stack>
+    <Stack ref={wrapperRef}>
       <Flex gap={2}>
         {product?.variants?.map((variant, index) => (
           <Button
-            ref={wrapperRef}
             // @ts-ignore
             isDisabled={!variant?.available}
             key={index + variant.id}
@@ -38,9 +37,8 @@ const OptionsMenu = () => {
           </Button>
         ))}
       </Flex>
-      <Button 
-      mt={4}
-        ref={wrapperRef}
+      <Button
+        mt={4}
         onClick={() => {
           if (selectedVariant !== null && checkout && product?.variants?.[selectedVariant]?.id) {
             dispatch.cartModel.addLineItemToCart([
