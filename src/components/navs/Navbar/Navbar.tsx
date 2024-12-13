@@ -33,6 +33,7 @@ const Navbar = () => {
   return (
     <Flex ref={navRef} bg="white" px={5} py={4} justifyContent={"space-between"} alignItems={"center"}>
       <Text
+        pl={1}
         cursor={"pointer"}
         onClick={() => navigate("/")}
         fontSize={{ base: "md", lg: "xl" }}

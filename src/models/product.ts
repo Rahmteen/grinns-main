@@ -21,7 +21,13 @@ export const productModel = createModel<RootModel>()({
     setSelectedVariant: (state: ProductModelState, selectedVariant: number) => ({ ...state, selectedVariant }),
     setSelectedPhoto: (state: ProductModelState, selectedPhoto: number) => ({ ...state, selectedPhoto }),
     setAllProducts: (state: ProductModelState, allProducts: Product[]) => ({ ...state, allProducts }),
-    clearState: (state) => ({ product: null, allProducts: state.allProducts, selectedVariant: null, selectedPhoto: null }),
+    clearSelectedVariant: (state: ProductModelState) => ({ ...state, selectedVariant: null }),
+    clearState: (state) => ({
+      product: null,
+      allProducts: state.allProducts,
+      selectedVariant: null,
+      selectedPhoto: null,
+    }),
   },
   selectors: (slice) => ({
     selectAllProducts: () => slice((state): Product[] | null => state?.allProducts),

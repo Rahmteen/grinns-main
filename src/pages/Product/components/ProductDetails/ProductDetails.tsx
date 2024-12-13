@@ -18,7 +18,7 @@ const ProductDetails = () => {
       <ProductNameAndPrice />
       <Stack {...styles.$stackStyles}>
         <OptionsMenu />
-        <AddToCartButton />
+        {/* <AddToCartButton /> */}
       </Stack>
     </Fade>
   );

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Dispatch, store } from "@/store";
-import { GridItem, SimpleGrid, Stack } from "@chakra-ui/react";
+import { GridItem, SimpleGrid, SlideFade, Stack } from "@chakra-ui/react";
 import ProductDetails from "@/pages/Product/components/ProductDetails/ProductDetails";
 import ProductGallery from "@/pages/Product/components/ProductGallery/ProductGallery";
 import * as styles from "@/pages/Product/styles";
@@ -29,14 +29,16 @@ const Product = () => {
 
   return (
     <Stack {...styles.$stackStyles}>
-      <SimpleGrid {...styles.$gridStyles}>
-        <GridItem as={SimpleGrid} {...styles.$gridItemStyles}>
-          {product?.images && <ProductGallery images={product?.images} />}
-        </GridItem>
-        <GridItem {...styles.$gridItemStyles2} as={Stack}>
-          <ProductDetails />
-        </GridItem>
-      </SimpleGrid>
+      <SlideFade unmountOnExit={false} in={true} transition={{ enter: { duration: 0.35, delay: 0.35 } }}>
+        <SimpleGrid {...styles.$gridStyles}>
+          <GridItem as={SimpleGrid} {...styles.$gridItemStyles}>
+            {product?.images && <ProductGallery images={product?.images} />}
+          </GridItem>
+          <GridItem {...styles.$gridItemStyles2} as={Stack}>
+            <ProductDetails />
+          </GridItem>
+        </SimpleGrid>
+      </SlideFade>
     </Stack>
   );
 };

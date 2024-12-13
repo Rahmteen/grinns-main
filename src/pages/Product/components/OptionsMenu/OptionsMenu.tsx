@@ -1,8 +1,11 @@
 import { Dispatch, store } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
-import { Menu, MenuButton, MenuItem, MenuList, Text, Button } from "@chakra-ui/react";
+import { Menu, MenuButton, MenuItem, MenuList, Text, Button, Stack, Flex } from "@chakra-ui/react";
 import * as styles from "@/pages/Product/components/OptionsMenu/styles";
 import * as constants from "@/pages/Product/components/OptionsMenu/constants";
+
+import useOutsideClick from "@/hooks/useOutsideClick";
+import { useRef } from "react";
 
 /**
  * @name OptionsMenu
@@ -11,29 +14,48 @@ import * as constants from "@/pages/Product/components/OptionsMenu/constants";
  */
 
 const OptionsMenu = () => {
+  const wrapperRef = useRef(null);
   const dispatch = useDispatch<Dispatch>();
+  const checkout = useSelector(store.select.cartModel.selectCheckout);
   const product = useSelector(store.select.productModel.selectProduct);
   const selectedVariant = useSelector(store.select.productModel.selectVariant);
 
+  useOutsideClick(wrapperRef, () => dispatch.productModel.clearSelectedVariant());
+
   return (
-    <Menu {...styles.$menuStyles}>
-      <MenuButton as={Button} {...styles.$memuButtonStyles} rightIcon={<Text as={constants.ICON_ELEMENT} {...styles.$iconStyles} />}>
-        {selectedVariant === null ? `${constants.SELECT_TEXT} ${product?.options?.[0]?.name}` : product?.variants[selectedVariant]?.title}
-      </MenuButton>
-      <MenuList {...styles.$menuListStyles}>
+    <Stack>
+      <Flex gap={2}>
         {product?.variants?.map((variant, index) => (
-          <MenuItem
+          <Button
+            ref={wrapperRef}
             // @ts-ignore
             isDisabled={!variant?.available}
             key={index + variant.id}
             onClick={() => dispatch.productModel.setSelectedVariant(index)}
-            {...styles.$menuListStyles}
+            {...styles.$buttonStyles(selectedVariant, index)}
           >
             {variant?.title}
-          </MenuItem>
+          </Button>
         ))}
-      </MenuList>
-    </Menu>
+      </Flex>
+      <Button 
+      mt={4}
+        ref={wrapperRef}
+        onClick={() => {
+          if (selectedVariant !== null && checkout && product?.variants?.[selectedVariant]?.id) {
+            dispatch.cartModel.addLineItemToCart([
+              checkout.id,
+              [{ variantId: product?.variants?.[selectedVariant]?.id, quantity: 1 }],
+            ]);
+            dispatch.productModel.clearSelectedVariant();
+          }
+        }}
+        isDisabled={selectedVariant === null}
+        {...styles.$buttonStyles2}
+      >
+        {"ADD TO CART"}
+      </Button>
+    </Stack>
   );
 };
 

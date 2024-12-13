@@ -79,7 +79,7 @@ const CartDrawer = () => {
                   </Flex>
                 </Stack>
                 <Stack py={1} justifyContent={"space-between"} minH="100%" ml="auto">
-                  <Text fontWeight={700} fontSize={"xs"} fontFamily={"mono"} textAlign={"right"}>
+                  <Text fontWeight={700} fontSize={"xs"} fontFamily={"nineties"} textAlign={"right"}>
                     {formatPrice(lineItem?.variant?.price?.amount)}
                   </Text>
                   <Text
@@ -88,12 +88,12 @@ const CartDrawer = () => {
                     }}
                     cursor={"pointer"}
                     _hover={{ color: "black" }}
-                    color="black"
-                    fontWeight={800}
+                    color="blackAlpha.800"
+                    fontWeight={700}
                     textUnderlineOffset={"3px"}
                     textDecoration={"underline"}
                     fontSize={"2xs"}
-                    fontFamily={"inter"}
+                    fontFamily={"nineties"}
                     textAlign={"right"}
                   >
                     remove
@@ -102,14 +102,14 @@ const CartDrawer = () => {
               </Flex>
             ))
           ) : (
-            <Text mt={-1} fontWeight={500} color="blackAlpha.500" fontFamily={"bricolage"} fontSize={"sm"} ml={1}>
+            <Text mt={-2} fontWeight={400} color="blackAlpha.500" fontFamily={"nineties"} fontSize={"xs"} ml={0.5}>
               there's nothing here...
             </Text>
           )}
         </DrawerBody>
         <DrawerFooter gap={4} as={Stack}>
           <Flex minW="100%" justifyContent={"space-between"}>
-            <Text fontWeight={500} color="blackAlpha.600" fontFamily={"bricolage"} fontSize={"sm"}>
+            <Text fontWeight={500} color="blackAlpha.600" fontFamily={"mono"} fontSize={"sm"}>
               SUBTOTAL
             </Text>
             <Text fontWeight={700} color="black" fontFamily={"bricolage"} fontSize={"sm"}>
@@ -132,10 +132,10 @@ const CartDrawer = () => {
             borderColor="black"
             _hover={{ bg: "black", color: "white" }}
             transition="0.2s all ease-in-out"
-            rounded="full"
+            rounded="none"
             minW="100%"
           >
-            <Text fontFamily={"bricolage"} fontSize={"xs"} fontWeight={600} textTransform={"uppercase"}>
+            <Text fontFamily={"nineties"} fontSize={"xs"} fontWeight={600} textTransform={"uppercase"}>
               checkout
             </Text>
           </Button>
