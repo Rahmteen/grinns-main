@@ -74,7 +74,7 @@ const Navbar = () => {
           gap={0.5}
         >
           <Text fontSize={{ base: "sm", lg: "md" }} as="i" className="fa-sharp fa-cart-shopping" />
-          <Stack pl={{ base: 0.5, lg: 1 }} mr={-1}>
+          <Stack pl={{ base: 0.5, lg: 1 }} mr={{ lg: -1 }}>
             <SlideFade unmountOnExit={false} in={checkout?.lineItems?.length ? true : false}>
               <Text
                 px={checkout?.lineItems?.length ? 1 : 0}
