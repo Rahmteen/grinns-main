@@ -6,20 +6,24 @@ import { SpotifyAlbum } from "@/types";
 interface SpotifyModelState {
   accessToken: string | null;
   artistAlbums: SpotifyAlbum[] | null;
+  latestRelease: SpotifyAlbum[] | null;
 }
 
 export const spotifyModel = createModel<RootModel>()({
   state: {
     accessToken: null,
     artistAlbums: null,
+    latestRelease: null,
   } as SpotifyModelState,
   reducers: {
     setAccessToken: (state, accessToken) => ({ ...state, accessToken }),
     setArtistAlbums: (state, artistAlbums) => ({ ...state, artistAlbums }),
+    setLatestRelease: (state, latestRelease) => ({ ...state, latestRelease }),
   },
   selectors: (slice) => ({
     selectAccessToken: () => slice((state) => state.accessToken),
     selectArtistAlbums: () => slice((state) => state.artistAlbums),
+    selectLatestRelease: () => slice((state) => state.latestRelease),
   }),
   effects: () => ({
     async getAccessToken() {
@@ -41,6 +45,7 @@ export const spotifyModel = createModel<RootModel>()({
 
         this.setAccessToken(response.data.access_token);
         this.getArtistAlbums(response.data.access_token);
+        this.getLatestRelease(response.data.access_token);
       } catch (error) {
         console.error("Error fetching Spotify token:", error);
       }
@@ -63,6 +68,25 @@ export const spotifyModel = createModel<RootModel>()({
         }
       } catch (error) {
         console.error("Error fetching Spotify token:", error);
+      }
+    },
+    async getLatestRelease(accessToken: string) {
+      const artistId = "196MfFl5VIfyX1ZBmJeWHc";
+      const config = {
+        headers: { Authorization: `Bearer ${accessToken}` },
+        params: {
+          include_groups: "single", // Fetch albums and singles
+          limit: 1, // Get only the latest release
+          sort: "release_date:desc", // Sort by latest release date
+        },
+      };
+
+      try {
+        const response = await axios.get(`https://api.spotify.com/v1/artists/${artistId}/albums`, config);
+        const latestRelease = response.data.items[0]; // Get the first item (latest)
+        this.setLatestRelease(latestRelease);
+      } catch (error) {
+        console.error("Error fetching latest release:", error);
       }
     },
   }),

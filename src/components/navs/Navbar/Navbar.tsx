@@ -1,7 +1,7 @@
 import CartDrawer from "@/components/shopping/CartDrawer/CartDrawer";
 import { Dispatch, store } from "@/store";
-import { Fade, Flex, Image, SlideFade, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
+import { Flex, SlideFade, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -33,10 +33,12 @@ const Navbar = () => {
   return (
     <Flex ref={navRef} bg="white" px={5} py={4} justifyContent={"space-between"} alignItems={"center"}>
       <Text
-        pl={1}
+        pl={0.5}
+        fontStyle={"italic"}
         cursor={"pointer"}
+        letterSpacing={"wider"}
         onClick={() => navigate("/")}
-        fontSize={{ base: "md", lg: "xl" }}
+        fontSize={{ base: "md", lg: "lg" }}
         fontFamily={"nineties"}
         fontWeight={600}
         color={isMobile && pathname === "/" ? "black" : isMobile && pathname !== "/" ? "blackAlpha.500" : "black"}

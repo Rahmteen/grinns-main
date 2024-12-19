@@ -7,12 +7,14 @@ const DataWrapper = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch<Dispatch>();
   const spotlightProduct = useSelector(store.select.spotlightModel.selectProduct);
   const spotlightAlbum = useSelector(store.select.spotlightModel.selectAlbum);
+  const latestRelease = useSelector(store.select.spotlightModel.selectLatestRelease);
   const shows = useSelector(store.select.tourModel.selectShows);
   const accessToken = useSelector(store.select.spotifyModel.selectAccessToken);
   const artistAlbums = useSelector(store.select.spotifyModel.selectArtistAlbums);
   useEffect(() => {
     if (!spotlightAlbum) dispatch.spotlightModel.getSpotlightAlbum();
     if (!spotlightProduct) dispatch.spotlightModel.getSpotlightProduct();
+    if (!latestRelease) dispatch.spotlightModel.getLatestRelease();
     if (!shows) dispatch.tourModel.getShows();
     if (!accessToken) dispatch.spotifyModel.getAccessToken();
     if (artistAlbums?.length === 0 && accessToken) dispatch.spotifyModel.getArtistAlbums(accessToken);

@@ -1,3 +1,13 @@
+export interface LatestRelease {
+  showOnLanding: boolean;
+  urls: {
+    spotify: string;
+    appleMusic: string;
+  }
+  songName: string;
+  cover: string;
+}
+
 export interface SpotifyAlbum {
   album_type: string;
   total_tracks: number;

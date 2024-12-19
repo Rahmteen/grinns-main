@@ -1,4 +1,4 @@
-import { Album } from "@/types";
+import { Album, LatestRelease } from "@/types";
 import type { RootModel } from ".";
 import { createModel } from "@rematch/core";
 import { doc, getDoc } from "firebase/firestore";
@@ -7,21 +7,25 @@ import Client, { Product } from "shopify-buy";
 interface SpotlightModelState {
   product: Product | null;
   album: Album | null;
+  latestRelease: LatestRelease | null;
 }
 
 export const spotlightModel = createModel<RootModel>()({
   state: {
     product: null,
     album: null,
+    latestRelease: null,
   } as SpotlightModelState,
   reducers: {
     setProduct: (state: SpotlightModelState, product: Product) => ({ ...state, product }),
     setAlbum: (state: SpotlightModelState, album: Album) => ({ ...state, album }),
-    clearState: () => ({ product: null, album: null }),
+    setLatestRelease: (state: SpotlightModelState, latestRelease) => ({...state, latestRelease}),
+    clearState: () => ({ product: null, album: null, latestRelease: null }),
   },
   selectors: (slice) => ({
     selectProduct: () => slice((state) => state.product),
     selectAlbum: () => slice((state) => state.album),
+    selectLatestRelease: () => slice((state) => state.latestRelease),
   }),
   effects: () => ({
     async getSpotlightProduct() {
@@ -55,5 +59,14 @@ export const spotlightModel = createModel<RootModel>()({
         }
       }
     },
+    async getLatestRelease() {
+      const { db } = await import("@/firebase");
+      const docRef = doc(db, "spotlight", "latestRelease");
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        this.setLatestRelease(data);
+      }
+    }
   }),
 });
